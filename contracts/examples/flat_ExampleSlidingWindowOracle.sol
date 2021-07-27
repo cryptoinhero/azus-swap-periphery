@@ -70,31 +70,6 @@ library FixedPoint {
  *  SourceUnit: g:\work\2021\2021_07\27_Goosedefi_Fork\work\azus-swap-periphery\contracts\examples\ExampleSlidingWindowOracle.sol
 */
             
-pragma solidity =0.6.6;
-
-// a library for performing overflow-safe math, courtesy of DappHub (https://github.com/dapphub/ds-math)
-
-library SafeMath {
-    function add(uint x, uint y) internal pure returns (uint z) {
-        require((z = x + y) >= x, 'ds-math-add-overflow');
-    }
-
-    function sub(uint x, uint y) internal pure returns (uint z) {
-        require((z = x - y) <= x, 'ds-math-sub-underflow');
-    }
-
-    function mul(uint x, uint y) internal pure returns (uint z) {
-        require(y == 0 || (z = x * y) / y == x, 'ds-math-mul-overflow');
-    }
-}
-
-
-
-
-/** 
- *  SourceUnit: g:\work\2021\2021_07\27_Goosedefi_Fork\work\azus-swap-periphery\contracts\examples\ExampleSlidingWindowOracle.sol
-*/
-            
 pragma solidity >=0.5.0;
 
 interface IPancakePair {
@@ -146,6 +121,31 @@ interface IPancakePair {
     function sync() external;
 
     function initialize(address, address) external;
+}
+
+
+
+
+/** 
+ *  SourceUnit: g:\work\2021\2021_07\27_Goosedefi_Fork\work\azus-swap-periphery\contracts\examples\ExampleSlidingWindowOracle.sol
+*/
+            
+pragma solidity =0.6.6;
+
+// a library for performing overflow-safe math, courtesy of DappHub (https://github.com/dapphub/ds-math)
+
+library SafeMath {
+    function add(uint x, uint y) internal pure returns (uint z) {
+        require((z = x + y) >= x, 'ds-math-add-overflow');
+    }
+
+    function sub(uint x, uint y) internal pure returns (uint z) {
+        require((z = x - y) <= x, 'ds-math-sub-underflow');
+    }
+
+    function mul(uint x, uint y) internal pure returns (uint z) {
+        require(y == 0 || (z = x * y) / y == x, 'ds-math-mul-overflow');
+    }
 }
 
 
@@ -221,7 +221,7 @@ library PancakeLibrary {
                 hex'ff',
                 factory,
                 keccak256(abi.encodePacked(token0, token1)),
-                hex'14a900d2b4900a62ae4eb6e64017bfbf52d808b1e7981936877ebfc26f8e8cd8' // init code hash
+                hex'fdb61cd36db8851ff919ad8b2194cc42318a1c703d14a5c2bed541c5c9a3b001' // init code hash
             ))));
     }
 
